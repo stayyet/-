@@ -1,0 +1,21 @@
+use std::cmp::Ordering;
+fn bubble_sort<T: PartialOrd>(values: &mut [T], compare: fn(&T, &T) -> Ordering) {
+    let len = values.len();
+
+    for i in 0..len {
+        for j in 0..len - i - 1 {
+            if compare(&values[j], &values[j + 1]) == Ordering::Greater {
+                values.swap(j, j + 1);
+            }
+        }
+    }
+}
+fn main(){
+let mut strings = vec![4, 7, 8,5,9];
+
+bubble_sort(&mut strings, |a, b| a.cmp(b));
+
+for s in strings {
+    print!("{} ", s);
+    }
+}
